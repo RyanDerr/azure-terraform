@@ -37,3 +37,9 @@ variable "public_network_access_enabled" {
   type        = bool
   default     = false
 }
+
+variable "allow_nested_items_to_be_public" {
+  description = "Allow nested items to be public?"
+  type        = bool
+  default     = false
+}
