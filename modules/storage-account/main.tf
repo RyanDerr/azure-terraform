@@ -9,8 +9,16 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_storage_account" "sa" {
-  name                            = var.name
+resource "random_string" "storage_account_suffix" {
+  length  = 4
+  special = false
+  upper   = false
+  numeric = true
+  lower   = true
+}
+
+resource "azurerm_storage_account" "azure_storage_account" {
+  name                            = "${var.name}${random_string.storage_account_suffix.result}"
   resource_group_name             = var.rg_name
   location                        = var.location
   account_tier                    = var.account_tier

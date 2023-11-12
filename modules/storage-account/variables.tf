@@ -1,6 +1,10 @@
 variable "name" {
   description = "The name of the storage account"
   type        = string
+  validation {
+    condition     = length(var.name) <= 20 && length(var.name) > 3
+    error_message = "The storage account name must be between 3 and 20 characters in length."
+  }
 }
 
 variable "rg_name" {
